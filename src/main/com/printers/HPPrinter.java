@@ -28,6 +28,10 @@ public class HPPrinter {
         paperCount += 5;
     }
 
+    public boolean isReady() {
+        return inkLevel > 0 && paperCount > 0;
+    }
+
     @Override
     public String toString() {
         return String.format("Ink Level: %.1f; Paper Count: %d", inkLevel, paperCount);
