@@ -1,7 +1,8 @@
 package com.printers;
 
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HPPrinterTest {
     @Test
@@ -26,5 +27,13 @@ public class HPPrinterTest {
         printer.performMaintenanceHP();
         String expected = "Ink Level: 5,0; Paper Count: 5";
         assertEquals(expected, printer.toString());
+    }
+
+    @Test
+    public void testHPPrinterIsReady() {
+        HPPrinter printer = new HPPrinter(10, 10);
+        assertTrue(printer.isReady());
+        HPPrinter emptyPrinter = new HPPrinter(0, 0);
+        assertFalse(emptyPrinter.isReady());
     }
 }
