@@ -23,6 +23,11 @@ public class HPPrinter {
         }
     }
 
+    public void performMaintenanceHP() {
+        inkLevel += 5;
+        paperCount += 5;
+    }
+
     @Override
     public String toString() {
         return String.format("Ink Level: %.1f; Paper Count: %d", inkLevel, paperCount);
