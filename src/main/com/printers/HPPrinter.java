@@ -25,6 +25,6 @@ public class HPPrinter {
 
     @Override
     public String toString() {
-        return String.format("Ink Level: %.1f, Paper Count: %d", inkLevel, paperCount);
+        return String.format("Ink Level: %.1f; Paper Count: %d", inkLevel, paperCount);
     }
 }
