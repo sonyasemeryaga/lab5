@@ -23,7 +23,7 @@ public class HPPrinterTest {
     }
 
     @Test
-    public void givenPrinterWithSufficientResources_whenSaveInkModeCalled_thenInkAndPaperDecrease() {
+    public void givenPrinterWithSufficientResources_whenSaveInkModeCalled_thenResourcesDecrease() {
         HPPrinter printer = new HPPrinter(10, 10);
         printer.saveInkModeHP();
         String expected = "Ink Level: 9,5; Paper Count: 9";
