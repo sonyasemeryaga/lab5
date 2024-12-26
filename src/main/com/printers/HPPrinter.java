@@ -16,6 +16,13 @@ public class HPPrinter {
         }
     }
 
+    public void saveInkModeHP() {
+        if (inkLevel > 0 && paperCount > 0) {
+            inkLevel -= 0.5;
+            paperCount -= 1;
+        }
+    }
+
     @Override
     public String toString() {
         return String.format("Ink Level: %.1f, Paper Count: %d", inkLevel, paperCount);
