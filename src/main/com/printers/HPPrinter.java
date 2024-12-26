@@ -10,26 +10,33 @@ public class HPPrinter {
     }
 
     public void printHP() {
-        if (inkLevel > 0 && paperCount > 0) {
+        if (isReady()) {
+            System.out.println("HP printer is printing...");
             inkLevel -= 1;
             paperCount -= 1;
         }
     }
 
     public void saveInkModeHP() {
-        if (inkLevel > 0 && paperCount > 0) {
+        if (isReady()) {
+            System.out.println("HP printer is printing in saving ink mode...");
             inkLevel -= 0.5;
             paperCount -= 1;
         }
     }
 
     public void performMaintenanceHP() {
+        System.out.println("Performing maintenance...");
         inkLevel += 5;
         paperCount += 5;
     }
 
     public boolean isReady() {
-        return inkLevel > 0 && paperCount > 0;
+        if (inkLevel <= 0 || paperCount <= 0) {
+            System.out.println("Printer is not ready. Please check the resources.");
+            return false;
+        }
+        return true;
     }
 
     @Override
