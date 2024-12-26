@@ -11,4 +11,12 @@ public class HPPrinterTest {
         String expected = "Ink Level: 9,0, Paper Count: 9";
         assertEquals(expected, printer.toString());
     }
+
+    @Test
+    public void testHPPrinterSaveInkMode() {
+        HPPrinter printer = new HPPrinter(10, 10);
+        printer.saveInkModeHP();
+        String expected = "Ink Level: 9,5, Paper Count: 9";
+        assertEquals(expected, printer.toString());
+    }
 }
