@@ -26,7 +26,7 @@ public class HPPrinter {
     }
 
     public void performMaintenanceHP() {
-        System.out.println("Performing maintenance...");
+        System.out.println("HP printer is performing maintenance...");
         inkLevel += 5;
         paperCount += 5;
     }
