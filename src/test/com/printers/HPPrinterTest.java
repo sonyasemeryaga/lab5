@@ -33,6 +33,10 @@ public class HPPrinterTest {
     public void testHPPrinterIsReady() {
         HPPrinter printer = new HPPrinter(10, 10);
         assertTrue(printer.isReady());
+    }
+
+    @Test
+    public void testHPPrinterIsNotReady() {
         HPPrinter emptyPrinter = new HPPrinter(0, 0);
         assertFalse(emptyPrinter.isReady());
     }
