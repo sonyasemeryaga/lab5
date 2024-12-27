@@ -9,7 +9,7 @@ public class EpsonPrinterTest {
     public void givenPrinterWithSufficientResources_whenPrintCalled_thenResourcesDecrease() {
         EpsonPrinter printer = new EpsonPrinter(15, 12);
         printer.printEpson();
-        String expected = "Ink Level: 14.0; Paper Count: 11";
+        String expected = "Ink Level: 14,0; Paper Count: 11";
         assertEquals(expected, printer.toString());
     }
 
@@ -18,14 +18,14 @@ public class EpsonPrinterTest {
         EpsonPrinter printer = new EpsonPrinter(0, 0);
         assertFalse(printer.isReady());
         printer.printEpson();
-        assertEquals("Ink Level: 0.0; Paper Count: 0", printer.toString());
+        assertEquals("Ink Level: 0,0; Paper Count: 0", printer.toString());
     }
 
     @Test
     public void givenPrinterWithSufficientResources_whenSaveInkModeCalled_thenResourcesDecrease() {
         EpsonPrinter printer = new EpsonPrinter(8, 20);
         printer.saveInkModeEpson();
-        String expected = "Ink Level: 7.5; Paper Count: 19";
+        String expected = "Ink Level: 7,5; Paper Count: 19";
         assertEquals(expected, printer.toString());
     }
 
@@ -34,14 +34,14 @@ public class EpsonPrinterTest {
         EpsonPrinter printer = new EpsonPrinter(0, 0);
         assertFalse(printer.isReady());
         printer.saveInkModeEpson();
-        assertEquals("Ink Level: 0.0; Paper Count: 0", printer.toString());
+        assertEquals("Ink Level: 0,0; Paper Count: 0", printer.toString());
     }
 
     @Test
     public void givenPrinterWithoutResources_whenMaintenancePerformed_thenResourcesIncrease() {
         EpsonPrinter printer = new EpsonPrinter(0, 0);
         printer.performMaintenanceEpson();
-        String expected = "Ink Level: 5.0; Paper Count: 5";
+        String expected = "Ink Level: 5,0; Paper Count: 5";
         assertEquals(expected, printer.toString());
     }
 
@@ -50,7 +50,7 @@ public class EpsonPrinterTest {
         EpsonPrinter printer = new EpsonPrinter(6, 15);
         assertTrue(printer.isReady());
         printer.performMaintenanceEpson();
-        assertEquals("Ink Level: 11.0; Paper Count: 20", printer.toString());
+        assertEquals("Ink Level: 11,0; Paper Count: 20", printer.toString());
     }
 
     @Test
