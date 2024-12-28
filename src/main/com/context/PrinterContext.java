@@ -9,7 +9,7 @@ public class PrinterContext {
         this.paperCount = paperCount;
     }
 
-    public boolean isReady() {
+    public boolean hasEnoughResources() {
         if (inkLevel <= 0 || paperCount <= 0) {
             System.out.println("Printer is not ready. Please check the resources.");
             return false;

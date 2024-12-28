@@ -10,18 +10,18 @@ public class HPPrinter {
     }
 
     public boolean isReady() {
-        return context.isReady();
+        return context.hasEnoughResources();
     }
 
     public void printHP() {
-        if (context.isReady()) {
+        if (isReady()) {
             System.out.println("HP printer is printing...");
             context.useResources(1, 1);
         }
     }
 
     public void saveInkModeHP() {
-        if (context.isReady()) {
+        if (isReady()) {
             System.out.println("HP printer is printing in saving ink mode...");
             context.useResources(0.5, 1);
         }

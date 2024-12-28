@@ -10,18 +10,18 @@ public class EpsonPrinter {
     }
 
     public boolean isReady() {
-        return context.isReady();
+        return context.hasEnoughResources();
     }
 
     public void printEpson() {
-        if (context.isReady()) {
+        if (isReady()) {
             System.out.println("Canon printer is printing...");
             context.useResources(1, 1);
         }
     }
 
     public void saveInkModeEpson() {
-        if (context.isReady()) {
+        if (isReady()) {
             System.out.println("Canon printer is printing in saving ink mode...");
             context.useResources(0.5, 1);
         }
