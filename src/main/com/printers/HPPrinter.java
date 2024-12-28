@@ -1,46 +1,39 @@
 package com.printers;
 
+import com.context.PrinterContext;
+
 public class HPPrinter {
-    private double inkLevel;
-    private int paperCount;
+    private final PrinterContext context;
 
     public HPPrinter(double inkLevel, int paperCount) {
-        this.inkLevel = inkLevel;
-        this.paperCount = paperCount;
+        this.context = new PrinterContext(inkLevel, paperCount);
+    }
+
+    public boolean isReady() {
+        return context.isReady();
     }
 
     public void printHP() {
-        if (isReady()) {
+        if (context.isReady()) {
             System.out.println("HP printer is printing...");
-            inkLevel -= 1;
-            paperCount -= 1;
+            context.useResources(1, 1);
         }
     }
 
     public void saveInkModeHP() {
-        if (isReady()) {
+        if (context.isReady()) {
             System.out.println("HP printer is printing in saving ink mode...");
-            inkLevel -= 0.5;
-            paperCount -= 1;
+            context.useResources(0.5, 1);
         }
     }
 
     public void performMaintenanceHP() {
         System.out.println("HP printer is performing maintenance...");
-        inkLevel += 5;
-        paperCount += 5;
-    }
-
-    public boolean isReady() {
-        if (inkLevel <= 0 || paperCount <= 0) {
-            System.out.println("Printer is not ready. Please check the resources.");
-            return false;
-        }
-        return true;
+        context.replenishResources(5, 5);
     }
 
     @Override
     public String toString() {
-        return String.format("Ink Level: %.1f; Paper Count: %d", inkLevel, paperCount);
+        return context.toString();
     }
 }
