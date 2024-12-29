@@ -76,4 +76,49 @@ public class EpsonPrinterAdapterTest {
         adapter.maintain();
         assertEquals("Ink Level: 45,0; Paper Count: 55", printer.toString());
     }
+
+    @Test
+    public void givenEpsonPrinterWithNegativeInk_whenPrintCalled_thenResourcesRemainUnchanged() {
+        EpsonPrinter printer = new EpsonPrinter(-3, 10);
+        EpsonPrinterAdapter adapter = new EpsonPrinterAdapter(printer);
+        adapter.connect();
+        adapter.print();
+        assertEquals("Ink Level: -3,0; Paper Count: 10", printer.toString());
+    }
+
+    @Test
+    public void givenEpsonPrinterWithNegativePaper_whenPrintCalled_thenResourcesRemainUnchanged() {
+        EpsonPrinter printer = new EpsonPrinter(10, -5);
+        EpsonPrinterAdapter adapter = new EpsonPrinterAdapter(printer);
+        adapter.connect();
+        adapter.print();
+        assertEquals("Ink Level: 10,0; Paper Count: -5", printer.toString());
+    }
+
+    @Test
+    public void givenEpsonPrinterWithNegativeInk_whenSaveInkModeCalled_thenResourcesRemainUnchanged() {
+        EpsonPrinter printer = new EpsonPrinter(-1.5, 5);
+        EpsonPrinterAdapter adapter = new EpsonPrinterAdapter(printer);
+        adapter.connect();
+        adapter.saveInkPrint();
+        assertEquals("Ink Level: -1,5; Paper Count: 5", printer.toString());
+    }
+
+    @Test
+    public void givenEpsonPrinterWithNegativePaper_whenSaveInkModeCalled_thenResourcesRemainUnchanged() {
+        EpsonPrinter printer = new EpsonPrinter(10, -2);
+        EpsonPrinterAdapter adapter = new EpsonPrinterAdapter(printer);
+        adapter.connect();
+        adapter.saveInkPrint();
+        assertEquals("Ink Level: 10,0; Paper Count: -2", printer.toString());
+    }
+
+    @Test
+    public void givenEpsonPrinterWithNegativeResources_whenMaintenancePerformed_thenResourcesRemainUnchanged() {
+        EpsonPrinter printer = new EpsonPrinter(-5, -5);
+        EpsonPrinterAdapter adapter = new EpsonPrinterAdapter(printer);
+        adapter.connect();
+        adapter.maintain();
+        assertEquals("Ink Level: -5,0; Paper Count: -5", printer.toString());
+    }
 }
