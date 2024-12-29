@@ -1,6 +1,10 @@
 package com.printers;
 
 import com.context.PrinterContext;
+import com.states.NonWorkingState;
+import com.states.PrintingState;
+import com.states.SavingInkState;
+import com.states.MaintenanceState;
 
 public class HPPrinter {
     private final PrinterContext context;
@@ -9,27 +13,28 @@ public class HPPrinter {
         this.context = new PrinterContext(inkLevel, paperCount);
     }
 
-    public boolean isReady() {
-        return context.hasEnoughResources();
+    public void connectHPPrinter() {
+        System.out.println("Connecting HP Printer...");
+        context.setState(new NonWorkingState());
+        context.request();
     }
 
     public void printHP() {
-        if (isReady()) {
-            System.out.println("HP printer is printing...");
-            context.useResources(1, 1);
-        }
+        System.out.println("HP Printer is switching to PrintingState...");
+        context.setState(new PrintingState());
+        context.request();
     }
 
     public void saveInkModeHP() {
-        if (isReady()) {
-            System.out.println("HP printer is printing in saving ink mode...");
-            context.useResources(0.5, 1);
-        }
+        System.out.println("HP Printer is switching to InkSavingState...");
+        context.setState(new SavingInkState());
+        context.request();
     }
 
     public void performMaintenanceHP() {
-        System.out.println("HP printer is performing maintenance...");
-        context.replenishResources(5, 5);
+        System.out.println("HP Printer is switching to MaintenanceState...");
+        context.setState(new MaintenanceState());
+        context.request();
     }
 
     @Override

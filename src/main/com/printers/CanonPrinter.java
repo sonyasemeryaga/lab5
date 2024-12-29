@@ -1,6 +1,10 @@
 package com.printers;
 
 import com.context.PrinterContext;
+import com.states.MaintenanceState;
+import com.states.NonWorkingState;
+import com.states.PrintingState;
+import com.states.SavingInkState;
 
 public class CanonPrinter {
     private final PrinterContext context;
@@ -9,27 +13,28 @@ public class CanonPrinter {
         this.context = new PrinterContext(inkLevel, paperCount);
     }
 
-    public boolean isReady() {
-        return context.hasEnoughResources();
+    public void connectCanonPrinter() {
+        System.out.println("Connecting Canon Printer...");
+        context.setState(new NonWorkingState());
+        context.request();
     }
 
     public void printCanon() {
-        if (isReady()) {
-            System.out.println("Canon printer is printing...");
-            context.useResources(1, 1);
-        }
+        System.out.println("Canon Printer is switching to PrintingState...");
+        context.setState(new PrintingState());
+        context.request();
     }
 
     public void saveInkModeCanon() {
-        if (isReady()) {
-            System.out.println("Canon printer is printing in saving ink mode...");
-            context.useResources(0.5, 1);
-        }
+        System.out.println("Canon Printer is switching to InkSavingState...");
+        context.setState(new SavingInkState());
+        context.request();
     }
 
     public void performMaintenanceCanon() {
-        System.out.println("Canon printer is performing maintenance...");
-        context.replenishResources(5, 5);
+        System.out.println("Canon Printer is switching to MaintenanceState...");
+        context.setState(new MaintenanceState());
+        context.request();
     }
 
     @Override

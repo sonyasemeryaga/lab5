@@ -23,18 +23,11 @@ public class PrinterContext {
     }
 
     public boolean hasEnoughResources() {
-        if (inkLevel <= 0 || paperCount <= 0) {
-            System.out.println("Printer is not ready. Please check the resources.");
-            return false;
-        }
-        return true;
+        return !(inkLevel <= 0) && paperCount > 0;
     }
 
     public void useResources(double ink, int paper) {
-        if (paper > paperCount || ink > inkLevel) {
-            System.out.println("Cannot use more resources than available.");
-            System.out.println("Please try again with different parameters or replenish the resources.");
-        } else {
+        if (paper <= paperCount && ink <= inkLevel) {
             paperCount -= paper;
             inkLevel -= ink;
         }
