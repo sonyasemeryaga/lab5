@@ -25,13 +25,13 @@ public class CanonPrinter {
         context.request();
     }
 
-    public void saveInkModeCanon() {
+    public void saveInkPrintCanon() {
         System.out.println("Canon Printer is switching to InkSavingState...");
         context.setState(new SavingInkState());
         context.request();
     }
 
-    public void performMaintenanceCanon() {
+    public void maintainCanon() {
         System.out.println("Canon Printer is switching to MaintenanceState...");
         context.setState(new MaintenanceState());
         context.request();

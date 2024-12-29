@@ -25,13 +25,13 @@ public class HPPrinter {
         context.request();
     }
 
-    public void saveInkModeHP() {
+    public void saveInkPrintHP() {
         System.out.println("HP Printer is switching to InkSavingState...");
         context.setState(new SavingInkState());
         context.request();
     }
 
-    public void performMaintenanceHP() {
+    public void maintainHP() {
         System.out.println("HP Printer is switching to MaintenanceState...");
         context.setState(new MaintenanceState());
         context.request();

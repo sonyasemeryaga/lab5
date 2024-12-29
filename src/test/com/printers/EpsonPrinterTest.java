@@ -25,7 +25,7 @@ public class EpsonPrinterTest {
     public void givenPrinterWithSufficientResources_whenSaveInkModeCalled_thenResourcesDecrease() {
         EpsonPrinter printer = new EpsonPrinter(8, 20);
         printer.connectEpsonPrinter();
-        printer.saveInkModeEpson();
+        printer.saveInkPrintEpson();
         assertEquals("Ink Level: 7,5; Paper Count: 19", printer.toString());
     }
 
@@ -33,7 +33,7 @@ public class EpsonPrinterTest {
     public void givenPrinterWithoutResources_whenSaveInkModeCalled_thenResourcesRemainUnchanged() {
         EpsonPrinter printer = new EpsonPrinter(0, 0);
         printer.connectEpsonPrinter();
-        printer.saveInkModeEpson();
+        printer.saveInkPrintEpson();
         assertEquals("Ink Level: 0,0; Paper Count: 0", printer.toString());
     }
 
@@ -41,7 +41,7 @@ public class EpsonPrinterTest {
     public void givenPrinterWithoutResources_whenMaintenancePerformed_thenResourcesIncrease() {
         EpsonPrinter printer = new EpsonPrinter(0, 0);
         printer.connectEpsonPrinter();
-        printer.performMaintenanceEpson();
+        printer.maintainEpson();
         assertEquals("Ink Level: 5,0; Paper Count: 5", printer.toString());
     }
 
@@ -49,7 +49,7 @@ public class EpsonPrinterTest {
     public void givenPrinterWithSufficientResources_whenMaintenancePerformed_thenResourcesIncrease() {
         EpsonPrinter printer = new EpsonPrinter(6, 15);
         printer.connectEpsonPrinter();
-        printer.performMaintenanceEpson();
+        printer.maintainEpson();
         assertEquals("Ink Level: 11,0; Paper Count: 20", printer.toString());
     }
 }

@@ -25,13 +25,13 @@ public class EpsonPrinter {
         context.request();
     }
 
-    public void saveInkModeEpson() {
+    public void saveInkPrintEpson() {
         System.out.println("Epson Printer is switching to InkSavingState...");
         context.setState(new SavingInkState());
         context.request();
     }
 
-    public void performMaintenanceEpson() {
+    public void maintainEpson() {
         System.out.println("Epson Printer is switching to MaintenanceState...");
         context.setState(new MaintenanceState());
         context.request();
