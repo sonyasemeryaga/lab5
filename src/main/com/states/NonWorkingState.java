@@ -8,8 +8,8 @@ public class NonWorkingState implements PrinterState {
         if (context.hasEnoughResources()) {
             System.out.println("Printer successfully connected. Switching to ReadyState.");
             context.setState(new ReadyState());
-        } else {
-            System.out.println("Insufficient resources. Printer remains non-working.");
+            return;
         }
+        System.out.println("Insufficient resources. Printer remains non-working.");
     }
 }
