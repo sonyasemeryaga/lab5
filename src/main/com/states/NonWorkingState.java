@@ -2,14 +2,14 @@ package com.states;
 
 import com.context.PrinterContext;
 
-public class NonWorkingState implements PrinterState {
+public class NonWorkingState extends PrinterState {
+
     @Override
     public void handle(PrinterContext context) {
         if (context.hasEnoughResources()) {
-            System.out.println("Printer successfully connected. Switching to ReadyState.");
-            context.setState(new ReadyState());
-            return;
+            switchToReadyState(context, "Printer successfully connected.");
+        } else {
+            System.out.println("Insufficient resources. Printer remains non-working.");
         }
-        System.out.println("Insufficient resources. Printer remains non-working.");
     }
 }

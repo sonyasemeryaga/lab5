@@ -2,7 +2,7 @@ package com.states;
 
 import com.context.PrinterContext;
 
-public class SavingInkState implements PrinterState {
+public class SavingInkState extends PrinterState {
 
     @Override
     public void handle(PrinterContext context) {
@@ -15,21 +15,11 @@ public class SavingInkState implements PrinterState {
             switchToNonWorkingState(context, "Resources exhausted during ink-saving printing.");
             return;
         }
-        switchToReadyState(context);
+        switchToReadyState(context, "Ink-saving printing completed.");
     }
 
     private void performInkSavingPrinting(PrinterContext context) {
         System.out.println("Printing in ink-saving mode...");
         context.useResources(0.5, 1);
-    }
-
-    private void switchToNonWorkingState(PrinterContext context, String message) {
-        System.out.println(message + " Switching to NonWorkingState.");
-        context.setState(new NonWorkingState());
-    }
-
-    private void switchToReadyState(PrinterContext context) {
-        System.out.println("Ink-saving printing completed. Switching to ReadyState.");
-        context.setState(new ReadyState());
     }
 }

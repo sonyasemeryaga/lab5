@@ -2,7 +2,7 @@ package com.states;
 
 import com.context.PrinterContext;
 
-public class PrintingState implements PrinterState {
+public class PrintingState extends PrinterState {
 
     @Override
     public void handle(PrinterContext context) {
@@ -15,21 +15,11 @@ public class PrintingState implements PrinterState {
             switchToNonWorkingState(context, "Resources exhausted during printing.");
             return;
         }
-        switchToReadyState(context);
+        switchToReadyState(context, "Printing completed.");
     }
 
     private void performPrinting(PrinterContext context) {
         System.out.println("Printing document...");
         context.useResources(1, 1);
-    }
-
-    private void switchToNonWorkingState(PrinterContext context, String message) {
-        System.out.println(message + " Switching to NonWorkingState.");
-        context.setState(new NonWorkingState());
-    }
-
-    private void switchToReadyState(PrinterContext context) {
-        System.out.println("Printing completed. Switching to ReadyState.");
-        context.setState(new ReadyState());
     }
 }

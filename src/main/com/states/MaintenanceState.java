@@ -2,7 +2,7 @@ package com.states;
 
 import com.context.PrinterContext;
 
-public class MaintenanceState implements PrinterState {
+public class MaintenanceState extends PrinterState {
 
     @Override
     public void handle(PrinterContext context) {
@@ -11,21 +11,11 @@ public class MaintenanceState implements PrinterState {
             switchToNonWorkingState(context, "Maintenance completed, but resources are still insufficient.");
             return;
         }
-        switchToReadyState(context);
+        switchToReadyState(context, "Maintenance completed.");
     }
 
     private void performMaintenance(PrinterContext context) {
         System.out.println("Performing maintenance...");
         context.replenishResources(5, 5);
-    }
-
-    private void switchToNonWorkingState(PrinterContext context, String message) {
-        System.out.println(message + " Switching to NonWorkingState.");
-        context.setState(new NonWorkingState());
-    }
-
-    private void switchToReadyState(PrinterContext context) {
-        System.out.println("Maintenance completed. Switching to ReadyState.");
-        context.setState(new ReadyState());
     }
 }
