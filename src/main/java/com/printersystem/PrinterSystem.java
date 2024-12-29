@@ -25,6 +25,7 @@ public class PrinterSystem {
         canonAdapter.print();
         canonAdapter.saveInkPrint();
         canonAdapter.maintain();
+        canonAdapter.print();
         System.out.println(canonPrinter);
 
         EpsonPrinter epsonPrinter = new EpsonPrinter(-5, -10);
