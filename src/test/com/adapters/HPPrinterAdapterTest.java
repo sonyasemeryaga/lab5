@@ -43,11 +43,11 @@ public class HPPrinterAdapterTest {
 
     @Test
     public void givenPrinterWithLowInk_whenSaveInkModeCalled_thenResourcesRemainUnchanged() {
-        HPPrinter printer = new HPPrinter(0.5, 5);
+        HPPrinter printer = new HPPrinter(0.4, 5);
         HPPrinterAdapter adapter = new HPPrinterAdapter(printer);
         adapter.connect();
         adapter.saveInkPrint();
-        assertEquals("Ink Level: 0,5; Paper Count: 5", printer.toString());
+        assertEquals("Ink Level: 0,4; Paper Count: 5", printer.toString());
     }
 
     @Test
