@@ -15,7 +15,6 @@ public class HPPrinter {
 
     public void connectHP() {
         System.out.println("Connecting HP Printer...");
-        context.setState(new NonWorkingState());
         context.request();
     }
 

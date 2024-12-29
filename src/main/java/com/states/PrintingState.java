@@ -6,7 +6,7 @@ public class PrintingState extends PrinterState {
 
     @Override
     public void handle(PrinterContext context) {
-        if (!context.hasValidResources()) {
+        if (!context.hasEnoughResources()) {
             switchToNonWorkingState(context, "Cannot print due to invalid resources.");
             return;
         }

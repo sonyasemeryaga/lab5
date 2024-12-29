@@ -15,7 +15,6 @@ public class EpsonPrinter {
 
     public void connectEpson() {
         System.out.println("Connecting Epson Printer...");
-        context.setState(new NonWorkingState());
         context.request();
     }
 
