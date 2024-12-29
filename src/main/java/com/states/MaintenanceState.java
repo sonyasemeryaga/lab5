@@ -6,11 +6,11 @@ public class MaintenanceState extends PrinterState {
 
     @Override
     public void handle(PrinterContext context) {
-        performMaintenance(context);
-        if (!context.hasEnoughResources()) {
-            switchToNonWorkingState(context, "Maintenance completed, but resources are still insufficient.");
+        if (!context.hasValidResources()) {
+            switchToNonWorkingState(context, "Cannot perform maintenance due to insufficient or invalid resources.");
             return;
         }
+        performMaintenance(context);
         switchToReadyState(context, "Maintenance completed.");
     }
 
