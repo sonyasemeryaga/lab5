@@ -1,12 +1,25 @@
 package com.context;
 
+import com.states.NonWorkingState;
+import com.states.PrinterState;
+
 public class PrinterContext {
+    private PrinterState currentState;
     private double inkLevel;
     private int paperCount;
 
     public PrinterContext(double inkLevel, int paperCount) {
         this.inkLevel = inkLevel;
         this.paperCount = paperCount;
+        this.currentState = new NonWorkingState();
+    }
+
+    public void setState(PrinterState state) {
+        this.currentState = state;
+    }
+
+    public void request() {
+        currentState.handle(this);
     }
 
     public boolean hasEnoughResources() {
