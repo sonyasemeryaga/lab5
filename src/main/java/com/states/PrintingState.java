@@ -10,10 +10,6 @@ public class PrintingState extends PrinterState {
             switchToNonWorkingState(context, "Cannot print due to invalid resources.");
             return;
         }
-        if (!context.hasEnoughResourcesForCommonPrinting()) {
-            switchToReadyState(context, "Not enough resources for printing, but printer is now ready.");
-            return;
-        }
         performPrinting(context);
         if (!context.hasEnoughResources()) {
             switchToNonWorkingState(context, "Resources exhausted during printing.");

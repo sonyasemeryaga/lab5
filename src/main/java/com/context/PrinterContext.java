@@ -30,10 +30,6 @@ public class PrinterContext {
         return inkLevel >= 0 && paperCount >= 0;
     }
 
-    public boolean hasEnoughResourcesForCommonPrinting() {
-        return inkLevel >= 1 && paperCount >= 1;
-    }
-
     public void useResources(double ink, int paper) {
         if (paper <= paperCount && ink <= inkLevel) {
             paperCount -= paper;
