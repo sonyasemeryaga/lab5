@@ -13,7 +13,7 @@ public class CanonPrinter {
         this.context = new PrinterContext(inkLevel, paperCount);
     }
 
-    public void connectCanonPrinter() {
+    public void connectCanon() {
         System.out.println("Connecting Canon Printer...");
         context.setState(new NonWorkingState());
         context.request();

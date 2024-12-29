@@ -13,7 +13,7 @@ public class EpsonPrinter {
         this.context = new PrinterContext(inkLevel, paperCount);
     }
 
-    public void connectEpsonPrinter() {
+    public void connectEpson() {
         System.out.println("Connecting Epson Printer...");
         context.setState(new NonWorkingState());
         context.request();
